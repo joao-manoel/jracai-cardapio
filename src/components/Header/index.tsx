@@ -23,7 +23,7 @@ const Header: React.FC = () => {
       setScrollY(window.pageYOffset)
 
       if(HeaderHeight) {
-        if(scrollY >= HeaderHeight) {
+        if(scrollY >= HeaderHeight - 20) {
           setIsHeaderScrolled(true)
         }else{
           setIsHeaderScrolled(false)

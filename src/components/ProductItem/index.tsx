@@ -14,11 +14,11 @@ function ProductItem({name, price, image, id}: ProductItemProps) {
 
   const [qnt, setQnt] = useState(0);
 
-  const acrescentar = () =>{
+  const add = () =>{
     setQnt(qnt + 1);
   }
 
-  const diminuir = () =>{
+  const decrease = () =>{
     if(qnt > 0){
       setQnt(qnt - 1);
     }
@@ -36,9 +36,9 @@ function ProductItem({name, price, image, id}: ProductItemProps) {
       </InfoContent>
 
       <InputContent>
-        <button type="button" id="dec" onClick={diminuir}>-</button>
+        <button type="button" id="dec" onClick={decrease}>-</button>
         <input type="text" value={qnt} disabled/>
-        <button type="button" id="acre" onClick={acrescentar}>+</button>
+        <button type="button" id="acre" onClick={add}>+</button>
       </InputContent>
     </Container>
   );

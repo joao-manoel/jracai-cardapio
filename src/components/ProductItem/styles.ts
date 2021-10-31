@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const InfoContent = styled.div<InfoContentProps>`
   display: flex;
-  width: 170%;
+  width: 70%;
 
   div{
     padding: 7px;
@@ -55,9 +55,10 @@ export const InfoContent = styled.div<InfoContentProps>`
 export const InputContent = styled.div`
   display: flex;
   justify-content: flex-end;
+  width: 40%;
 
   button{
-    width: 35%;
+    width: 33.3%;
     border: none;
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
@@ -73,11 +74,12 @@ export const InputContent = styled.div`
   }
 
   input{
-    width: 20%;
+    width: 33.3%;
     height: 100%;
     text-align: center;
     font-size: 1.5em;
-    background: transparent;
+    background: rgba(0,0,0, 0.4);
+    padding: 0 7px;
     border: none;
     font-weight: ${props => props.theme.text.weight.light};
     color: ${props => props.theme.colors.text};
