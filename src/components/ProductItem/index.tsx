@@ -36,7 +36,10 @@ function ProductItem({name, price, image, id}: ProductItemProps) {
       </InfoContent>
 
       <InputContent>
-        <button type="button" id="dec" onClick={decrease}>-</button>
+        {qnt >= 1 && (
+          <button type="button" id="dec" onClick={decrease}>-</button>
+        )}
+        
         <input type="text" value={qnt} disabled/>
         <button type="button" id="acre" onClick={add}>+</button>
       </InputContent>
