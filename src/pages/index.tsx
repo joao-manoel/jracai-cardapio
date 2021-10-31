@@ -4,16 +4,18 @@ import Catalogo from "../components/Catalogo";
 
 import Header from "../components/Header";
 import {Interface} from "../components/Interface";
+import { Page } from "../components/page";
 
 const Home: NextPage = () => {
   return (
-    <Interface>
-      <Head>
-        <title>JR Açai - Cardapio online</title>
-      </Head>
+    <Page title="JR AÇAI - Cardapio online" description="jr açai - o seu cardapio online" path="/">
+      <Interface>
       <Header />
       <Catalogo />
+
+      <h1>{process.env.NEXT_PUBLIC_URL}</h1>
     </Interface>
+    </Page>
   );
 };
 

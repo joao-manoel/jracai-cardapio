@@ -8,6 +8,8 @@ export const Container = styled.div`
   background: ${props => props.theme.colors.primary};
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
 
+  max-width: 700px;
+
   margin-bottom: 14px;
   padding: 7px;
   display: flex;
