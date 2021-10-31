@@ -7,7 +7,7 @@ import { Page } from "../components/page";
 
 const Home: NextPage = () => {
   return (
-    <Page title="JR AÇAI - Cardapio online" description="jr açai - o seu cardapio online" path="/">
+    <Page title="JR AÇAI - Cardapio online" description="Peça seu açai do jeito mais fácil." path="/">
       <Interface>
       <Header />
       <Catalogo />

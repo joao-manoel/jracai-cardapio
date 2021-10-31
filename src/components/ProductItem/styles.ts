@@ -21,7 +21,6 @@ export const Container = styled.div`
 export const InfoContent = styled.div<InfoContentProps>`
   display: flex;
   width: 70%;
-
   div{
     padding: 7px;
 
@@ -30,7 +29,7 @@ export const InfoContent = styled.div<InfoContentProps>`
     justify-content: space-around;
 
     h4{
-      font-size: 1rem;
+      font-size: 1.3rem;
     }
 
     span{ 
@@ -46,6 +45,8 @@ export const InfoContent = styled.div<InfoContentProps>`
     background: url(${props => props.image}) center;
     background-size: 100px;
     overflow: hidden;
+    border: 3px solid ${props => props.theme.colors.background};
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 
     img{
       height: 75px;
