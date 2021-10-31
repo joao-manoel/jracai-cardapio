@@ -1,12 +1,38 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 
 import { Container } from './styles';
 
 const Header: React.FC = () => {
+
+  const [scrollY, setScrollY] = useState(0);
+  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+
+  useEffect(() => {
+    HeaderScrollFixed();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollY]);
+
+
+  const HeaderScrollFixed = () => {
+    const Header = document.getElementById('header');
+    const HeaderHeight = Header?.offsetHeight;
+
+    window.onscroll = () => {
+      setScrollY(window.pageYOffset)
+
+      if(HeaderHeight) {
+        if(scrollY >= HeaderHeight) {
+          setIsHeaderScrolled(true)
+        }else{
+          setIsHeaderScrolled(false)
+        }
+      }
+    }
+  }
   return (
-    <Container>
+    <Container id="header" isHeaderScrolled={isHeaderScrolled}>
       <img src={`/images/logo.png`} alt="JR açai Logo" />
     </Container>
   );

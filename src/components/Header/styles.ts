@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface Props {
+  isHeaderScrolled: boolean;
+}
+
+export const Container = styled.div<Props>`
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s ease-in-out;
 
   position: fixed;
   top: 0;
@@ -15,5 +20,18 @@ export const Container = styled.div`
 
   img{
     width: 10vh;
+    transition: all 0.5s ease-in-out;
   }
+
+  ${props => props.isHeaderScrolled && `
+    justify-content: flex-start;
+    padding: 10px 10px;
+
+    img{ 
+      width: 7vh;
+    }
+
+
+  `}
+  
 `;
