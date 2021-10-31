@@ -1,9 +1,91 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+
+import Header from "../components/Header";
+import {Interface} from "../components/Interface";
 
 const Home: NextPage = () => {
-  return <span>JR ACAI cardapio</span>;
+  return (
+    <Interface>
+      <Head>
+        <title>JR Açai - Cardapio online</title>
+      </Head>
+      <Header />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </Interface>
+  );
 };
 
 export default Home;
