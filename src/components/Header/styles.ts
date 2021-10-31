@@ -21,13 +21,13 @@ export const Container = styled.div<Props>`
   }
 
   ${props => props.isHeaderScrolled && `
-    background: rgba(94, 21, 69, 0.5);
+    background: rgba(61, 6, 42, 1);
     position: fixed;
     top: 0;
     left: 0;
     justify-content: flex-start;
     padding: 10px 10px;
-
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
     img{ 
       width: 5vh;
     }
