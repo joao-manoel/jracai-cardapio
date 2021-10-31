@@ -17,17 +17,3 @@ export const Container = styled.div`
     width: 10vh;
   }
 `;
-
-
-export const Alert = styled.div`
-  background: ${props => props.theme.colors.third};
-  color: ${props => props.theme.colors.text};
-
-  position: absolute;
-  bottom: -17px;
-
-  width: 100vw;
-
-  text-align: center;
-  font-weight: ${props => props.theme.text.weight.light};
-`

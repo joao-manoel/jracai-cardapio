@@ -12,7 +12,7 @@ export default {
   },
 
   text: {
-    fontFamily: '\'Fira Sans\', sans-serif',
+    fontFamily: "'Fira Sans', sans-serif",
 
     weight:{
       thin: 100,

@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-import { Container, Alert } from './styles';
+import { Container } from './styles';
 
 const Header: React.FC = () => {
   return (
