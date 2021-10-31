@@ -1,5 +1,5 @@
-const title = 'JR AÇAI - Cardapio online'
-const description = 'Peça seu açai com facilidade.'
+const title = 'JR AÇAI - Cardápio online'
+const description = 'Peça seu açai do jeito mais fácil.'
 
 const SEO = {
   title, 
