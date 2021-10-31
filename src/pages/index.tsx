@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 
 const Home: NextPage = () => {
-  return <h1>JR ACAI cardapio</h1>;
+  return <span>JR ACAI cardapio</span>;
 };
 
 export default Home;
