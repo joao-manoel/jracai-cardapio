@@ -3,6 +3,7 @@ import Catalogo from "../components/Catalogo";
 
 import Header from "../components/Header";
 import {Interface} from "../components/Interface";
+import Footer from "../components/Footer";
 import { Page } from "../components/page";
 
 const Home: NextPage = () => {
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
       <Interface>
       <Header />
       <Catalogo />
+      <Footer />
     </Interface>
     </Page>
   );

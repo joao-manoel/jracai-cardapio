@@ -67,6 +67,16 @@ export const InputContent = styled.div`
     color: ${props => props.theme.colors.text};
     font-size: 1.6rem;
     outline: none;
+
+    &:first-child{
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:last-child{
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 
   #dec{
