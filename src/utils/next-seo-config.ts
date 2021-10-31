@@ -4,16 +4,16 @@ const description = 'Peça seu açai com facilidade.'
 const SEO = {
   title, 
   description,
-  canonical: process.env.NEXT_PUBLIC_URL,
+  canonical: 'https://jracai-cardapio.vercel.app',
   openGraph: {
     type: 'website',
     locale: 'pt_Br',
-    url: process.env.NEXT_PUBLIC_URL,
+    url: 'https://jracai-cardapio.vercel.app/',
     title,
     description,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_URL}/og.png`,
+        url: `https://jracai-cardapio.vercel.app/og.jpg`,
         alt: title,
         width: 1280,
         height: 720

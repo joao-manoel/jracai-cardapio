@@ -9,7 +9,7 @@ type PageProps = {
 }
 
 export function Page({children, path,title, description}: PageProps) {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}${path}`
+  const url = `https://jracai-cardapio.vercel.app${path}`
   return (
     <>
       <NextSeo 
