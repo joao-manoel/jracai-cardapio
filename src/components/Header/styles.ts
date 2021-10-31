@@ -12,9 +12,6 @@ export const Container = styled.div<Props>`
   justify-content: center;
   transition: all 0.5s ease-in-out;
 
-  position: fixed;
-  top: 0;
-  left: 0;
 
   padding: 10px 0px;
 
@@ -24,11 +21,15 @@ export const Container = styled.div<Props>`
   }
 
   ${props => props.isHeaderScrolled && `
+    background: rgba(94, 21, 69, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
     justify-content: flex-start;
     padding: 10px 10px;
 
     img{ 
-      width: 7vh;
+      width: 5vh;
     }
 
 
