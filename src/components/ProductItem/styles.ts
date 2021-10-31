@@ -65,6 +65,7 @@ export const InputContent = styled.div`
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
     font-size: 1.6rem;
+    outline: none;
   }
 
   #dec{

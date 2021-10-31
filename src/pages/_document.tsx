@@ -35,7 +35,7 @@ class MyDocument extends Document {
       <Html lang="pt_Br">
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta name="description" content="JR AÇAI - Cardapio" />
+          <meta name="description" content="Peça seu açai do jeito mais fácil." />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />

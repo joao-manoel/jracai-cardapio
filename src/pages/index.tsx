@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Catalogo from "../components/Catalogo";
 
 import Header from "../components/Header";
