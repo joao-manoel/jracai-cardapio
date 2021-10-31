@@ -12,8 +12,6 @@ const Home: NextPage = () => {
       <Interface>
       <Header />
       <Catalogo />
-
-      <h1>{process.env.NEXT_PUBLIC_URL}</h1>
     </Interface>
     </Page>
   );
