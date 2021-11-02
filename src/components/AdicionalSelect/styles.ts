@@ -18,6 +18,15 @@ export const Container = styled.div`
       font-size: .9rem;
       color: #ccc;
       font-weight: ${props => props.theme.text.weight.light}
+      
+
+    }
+
+    button{
+      border: none;
+      background: transparent;
+      padding: 4px;
+      color: #ccc;
     }
   }
 
@@ -37,6 +46,7 @@ export const Container = styled.div`
         p{ 
           font-weight: ${props => props.theme.text.weight.medium};
           color: #f9f9f9;
+          
         }
       }
 

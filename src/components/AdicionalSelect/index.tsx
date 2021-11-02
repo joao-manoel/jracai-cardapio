@@ -1,14 +1,8 @@
-import React, {useState} from 'react';
-import { toast } from 'react-toastify';
+import React, {useState, useEffect} from 'react';
+import { useCart } from '../../contexts/CartContext';
 
-import 'react-toastify/dist/ReactToastify.css';
 import { Container } from './styles';
 
-
-type CartProps = {
-  name: string;
-  amount: number;
-}
 
 type AdicionaisProps = {
   name: string;
@@ -17,96 +11,53 @@ type AdicionaisProps = {
 
 interface AdicionalSelect {
   allAdicionais: Array<AdicionaisProps>;
-  qtn_adicionais: number;
+  max_adicionais: number;
   product_name: string;
+  product_id: number;
 }
 
-function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : AdicionalSelect) {
+function AdicionalSelect({allAdicionais, max_adicionais, product_name, product_id} : AdicionalSelect) {
 
-  const [cart, setCart] = useState<CartProps[]>([]);
+  const {addAdicionalInProduct, findProductAdicional, removeAdicional, countAdicional} = useCart();
+
+  const countAdicionais = countAdicional(product_id)
+
+  const [edit, setEdit] = useState<Boolean>(true);
+
+  useEffect(() =>{
+    if(countAdicionais >= max_adicionais){
+      setEdit(false);
+    }
+  }, [countAdicionais, max_adicionais])
 
   const AmountAdicional = (name: string) => {
-    const findAdicional = cart.find(a => a.name === name);
-    const amount = findAdicional?.amount;
+    const adicional = findProductAdicional(product_id, name)
 
-    if(amount){
-      return amount;
+    if(adicional){
+      return adicional.amount
     }
 
-    return 0
+    return 0;
   }
 
-  const addAdicional = (name: string) => {    
-    const findAdicional = cart.find(a => a.name === name);
-    const amountAdicionais = cart.length;
+  const calcRestanteAdicionais = () => {
 
-    if(amountAdicionais >= qtn_adicionais){
-      toast.error(`Voce ja selecionou ${qtn_adicionais} adicionais`);
-      return;
-    }
-
-    if(findAdicional){
-      const amount = findAdicional.amount + 1
-
-      if(amount >= 1){
-        toast.error('Voce ja selecionou esse adicional');
-        return;
-      }
-
-      updateAdicionalAmount(name, amount)
-      return;
-    }
-
-    const amount = 1;
-
-    const newCart = [...cart, {amount, name}]
-    setCart(newCart)
-  }
-
-  const removeAdicional = (name: string) => {
-    try{
-      const findAdicional = [...cart].find(a => a.name === name);
-
-      if(!findAdicional){
-        return toast.error('Error na remoção do adicional')
-      }
-
-      const removeAdicional = [...cart].filter( a => {
-        return a['name'] !== name
-      });
-
-      setCart(removeAdicional);
-    } catch {
-      toast.error('Erro na remoção do adicional');
-    }
-  }
-
-  const updateAdicionalAmount = (name: string, amount: number) => {
-    if(amount < 1){
-      return;
-    }
-
-    const updateAmountAdicional = [...cart].filter( a => {
-      if(a.name === name){
-        a.amount = amount;
-      }
-
-      return a;
-    })
-
-    setCart(updateAmountAdicional)
-  }
-
-  const amountAdicionaisLessSele = () => {
-
-    let amountCart = cart.length
-    let qtnRest = qtn_adicionais - amountCart
+    let amountCart = countAdicionais
+    let qtnRest = max_adicionais - amountCart
 
     if(amountCart <= 0){
-      return qtn_adicionais
+      return max_adicionais
     }
 
     return qtnRest    
+  }
+
+  const handleAddAdicional = (name: string) => {
+    addAdicionalInProduct(product_id, name, max_adicionais)
+  }
+  
+  const handleRemoveAdicional = (name: string) => {
+    removeAdicional(product_id, name)
   }
 
   return (
@@ -115,18 +66,21 @@ function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : Adicion
         <h4>
           1 {product_name}
         </h4>
-        {cart.length >= qtn_adicionais ? (
-          <p>
-            Voce ja selecionou todos os adicionais
+
+        {countAdicionais >= max_adicionais ? (
+          <p >
+            {max_adicionais}x Adicionais -
+            <button onClick={() => setEdit(!edit)}>editar</button>
           </p>
         ) : (
           <p>
-            Selecione os {amountAdicionaisLessSele()} adicionais
+            Selecione {calcRestanteAdicionais()} adicionais
           </p>
         )}
+
       </header>
 
-      {cart.length < qtn_adicionais && (
+      {edit && (
         <ul>
           {allAdicionais.map(adicional => (
             <li key={adicional.name}>
@@ -135,11 +89,11 @@ function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : Adicion
               </div>
               <div>
                 {AmountAdicional(adicional.name) >= 1 && (
-                  <button type="button" id="dec" onClick={() => removeAdicional(adicional.name)}>-</button>
+                  <button type="button" id="dec" onClick={() => handleRemoveAdicional(adicional.name)}>-</button>
                 )}
                 
                 <input type="text" value={AmountAdicional(adicional.name)}  disabled/>
-                <button type="button" id="acre" onClick={() => addAdicional(adicional.name)} >+</button>
+                <button type="button" id="acre" onClick={() => handleAddAdicional(adicional.name)} >+</button>
               </div>
             </li>
           ))}
