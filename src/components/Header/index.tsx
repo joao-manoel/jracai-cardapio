@@ -9,10 +9,10 @@ const Header: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
 
-  useEffect(() => {
-    HeaderScrollFixed();
+ // useEffect(() => {
+   // HeaderScrollFixed();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scrollY]);
+//  }, [scrollY]);
 
 
   const HeaderScrollFixed = () => {
