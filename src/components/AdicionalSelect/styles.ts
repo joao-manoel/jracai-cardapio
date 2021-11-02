@@ -42,6 +42,8 @@ export const Container = styled.div`
 
       div:last-child{
         width: 30%;
+        display: flex;
+        justify-content: flex-end;
 
         button, input{
           width: 33.3%;

@@ -97,29 +97,56 @@ function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : Adicion
     setCart(updateAmountAdicional)
   }
 
+  const amountAdicionaisLessSele = () => {
+
+    let amountCart = cart.length
+    let qtnRest = qtn_adicionais - amountCart
+
+    if(amountCart <= 0){
+      return qtn_adicionais
+    }
+
+    return qtnRest    
+  }
+
   return (
     <Container>
       <header>
         <h4>
           1 {product_name}
         </h4>
-        <p>Selecione até {qtn_adicionais} adicionais.</p>
+        {cart.length >= qtn_adicionais ? (
+          <p>
+            Voce ja selecionou todos os adicionais
+          </p>
+        ) : (
+          <p>
+            Selecione os {amountAdicionaisLessSele()} adicionais
+          </p>
+        )}
       </header>
 
-      <ul>
-        {allAdicionais.map(adicional => (
-          <li key={adicional.name}>
-            <div>
-              <p>{adicional.name}</p>
-            </div>
-            <div>
-              <button type="button" id="dec" onClick={() => removeAdicional(adicional.name)}>-</button>
-              <input type="text" value={AmountAdicional(adicional.name)}  disabled/>
-              <button type="button" id="acre" onClick={() => addAdicional(adicional.name)} >+</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {cart.length < qtn_adicionais && (
+        <ul>
+          {allAdicionais.map(adicional => (
+            <li key={adicional.name}>
+              <div>
+                <p>{adicional.name}</p>
+              </div>
+              <div>
+                {AmountAdicional(adicional.name) >= 1 && (
+                  <button type="button" id="dec" onClick={() => removeAdicional(adicional.name)}>-</button>
+                )}
+                
+                <input type="text" value={AmountAdicional(adicional.name)}  disabled/>
+                <button type="button" id="acre" onClick={() => addAdicional(adicional.name)} >+</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      
     </Container>
   );
 }
