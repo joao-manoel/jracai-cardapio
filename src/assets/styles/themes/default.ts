@@ -8,6 +8,9 @@ export default {
 
     background: '#3D2645',
 
+    success: '#4aeb44',
+    error: '#ff4124',
+
     text: '#F0EFF4'
   },
 
