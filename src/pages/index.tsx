@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
-import Catalogo from "../components/Catalogo";
 
+import Catalogo from "../components/Catalogo";
 import Header from "../components/Header";
 import {Interface} from "../components/Interface";
 import Footer from "../components/Footer";
 import { Page } from "../components/page";
+import InfoCart from "../components/InfoCart";
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
       <Interface>
       <Header />
       <Catalogo />
+      <InfoCart />
       <Footer />
     </Interface>
     </Page>
