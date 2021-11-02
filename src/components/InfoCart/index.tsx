@@ -8,7 +8,7 @@ import { Container, AsideLeft, AsideRight } from './styles';
 
 const InfoCart: React.FC = () => {
 
-  const {products} = useCart();
+  const {products, CreatePedido} = useCart();
   const cartSize = products.length;
 
   const total = formatPrice(
@@ -24,7 +24,10 @@ const InfoCart: React.FC = () => {
       return;
     }
 
-    toast.info('🚧 Sistema em desenvolvimento...')
+    const message = CreatePedido();
+
+    toast.info('🚧 Sistema em desenvolvimento...');
+    toast.info(message)
   }
   return (
     <Container>

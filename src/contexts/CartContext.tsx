@@ -14,7 +14,7 @@ type CartContextData = {
   findProductAdicional: (product_id: number, name: string) => AdicionaisProps | undefined;
   removeAdicional: (product_id: number, name: string) => void;
   countAdicional: (product_id: number) => number;
-  CreatePedido: () => void;
+  CreatePedido: () => string;
 }
 
 type AdicionaisProps = {
@@ -193,7 +193,7 @@ export function CartProvider({children}: CartProviderProps){
       }
     })
 
-    console.log(text)
+    return text
   }
 
   return (
