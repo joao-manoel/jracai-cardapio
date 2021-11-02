@@ -61,7 +61,24 @@ function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : Adicion
 
     const newCart = [...cart, {amount, name}]
     setCart(newCart)
-    toast.success(`Adicional ${amount}x ${name} adicionado com sucesso`)
+  }
+
+  const removeAdicional = (name: string) => {
+    try{
+      const findAdicional = [...cart].find(a => a.name === name);
+
+      if(!findAdicional){
+        return toast.error('Error na remoção do adicional')
+      }
+
+      const removeAdicional = [...cart].filter( a => {
+        return a['name'] !== name
+      });
+
+      setCart(removeAdicional);
+    } catch {
+      toast.error('Erro na remoção do adicional');
+    }
   }
 
   const updateAdicionalAmount = (name: string, amount: number) => {
@@ -78,7 +95,6 @@ function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : Adicion
     })
 
     setCart(updateAmountAdicional)
-    toast.success(`Adicional ${amount}x ${name} adicionado com sucesso`)
   }
 
   return (
@@ -97,7 +113,7 @@ function AdicionalSelect({allAdicionais, qtn_adicionais, product_name} : Adicion
               <p>{adicional.name}</p>
             </div>
             <div>
-              <button type="button" id="dec">-</button>
+              <button type="button" id="dec" onClick={() => removeAdicional(adicional.name)}>-</button>
               <input type="text" value={AmountAdicional(adicional.name)}  disabled/>
               <button type="button" id="acre" onClick={() => addAdicional(adicional.name)} >+</button>
             </div>
