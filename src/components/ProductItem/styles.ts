@@ -4,21 +4,27 @@ interface InfoContentProps {
   image: string;
 }
 
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  
+  padding: 7px;
+`
+
 export const Container = styled.div`
   background: ${props => props.theme.colors.primary};
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
 
   max-width: 700px;
-
   margin-bottom: 14px;
-  padding: 7px;
+  
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 
   border-radius: 14px;
 `;
 
-export const InfoContent = styled.div<InfoContentProps>`
+export const InfoItem = styled.div<InfoContentProps>`
   display: flex;
   width: 70%;
   div{
@@ -55,7 +61,7 @@ export const InfoContent = styled.div<InfoContentProps>`
   }
 `
 
-export const InputContent = styled.div`
+export const AddProduct = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 40%;
@@ -80,11 +86,11 @@ export const InputContent = styled.div`
   }
 
   #dec{
-    background: #ff4124;
+    background: ${props => props.theme.colors.error};
   }
 
   #acre{
-    background: #4aeb44;
+    background: ${props => props.theme.colors.success};
   }
 
   input{

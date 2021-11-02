@@ -9,6 +9,9 @@ declare module 'styled-components' {
 
       background: string;
 
+      success: string,
+      error: string,
+
       text: string;
     }
 

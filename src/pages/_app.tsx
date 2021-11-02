@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import {DefaultSeo} from 'next-seo'
+import { ToastContainer } from 'react-toastify';
 
 import SEO from '../utils/next-seo-config'
 import { ThemeProvider } from '../contexts/ThemeContext'
@@ -11,6 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <DefaultSeo {...SEO} />
+      <ToastContainer autoClose={3000} />
       <GlobalStyle />
       <Component {...pageProps} />
     </ThemeProvider>
