@@ -1,144 +1,77 @@
 /* eslint-disable @next/next/no-img-element */
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+
 import AdicionalSelect from '../AdicionalSelect';
+import {Adicionais} from '../../utils/products'
 
 import { Content, Container, InfoItem, AddProduct } from './styles';
+import { useCart } from '../../contexts/CartContext';
+import { formatPrice } from '../../utils/format';
 
 interface ProductItemProps {
   id: number;
   name: string;
-  price: string;
+  price: number;
   image: string;
-  qtn_adicionais: number;
+  max_adicionais: number;
 }
 
-const Adicionais = [
-  {
-    name: 'Morango',
-    icon: '🍓'
-  },
-  {
-    name: 'Banana',
-    icon: '🍌'
-  },
-  {
-    name: 'Kiwi',
-    icon: '🥝'
-  },
-  {
-    name: 'Granola',
-    icon: ''
-  },
-  {
-    name: 'Cereal',
-    icon: ''
-  },
-  {
-    name: 'Paçoca',
-    icon: ''
-  },
-  {
-    name: 'Leite em pó',
-    icon: ''
-  },
-  {
-    name: 'Leite condensado',
-    icon: ''
-  },
-  {
-    name: 'Chantilly',
-    icon: ''
-  },
-  {
-    name: 'Granulado choco',
-    icon: ''
-  },
-  {
-    name: 'Granulado colorido',
-    icon: ''
-  },
-  {
-    name: 'Ovomaltine',
-    icon: ''
-  },{
-    name: 'Disquete',
-    icon: ''
-  },{
-    name: 'Creme de avelã',
-    icon: ''
-  },{
-    name: 'Amendoim',
-    icon: ''
-  },{
-    name: 'Bis preto',
-    icon: ''
-  },{
-    name: 'Bis Branco',
-    icon: ''
-  },{
-    name: 'Negresco',
-    icon: ''
-  },{
-    name: 'Flocos de arroz',
-    icon: ''
-  },{
-    name: 'Jujuba',
-    icon: ''
-  },{
-    name: 'Cobertura de caramelo',
-    icon: ''
-  },{
-    name: 'Cobertura de chocolate',
-    icon: ''
-  },{
-    name: 'Cobertura de morango',
-    icon: ''
-  },
+function ProductItem({name, price, image, max_adicionais, id}: ProductItemProps) {
 
-]
+  const {addProduct, updateProductAmount, findProduct, products} = useCart();
 
-function ProductItem({name, price, image, qtn_adicionais, id}: ProductItemProps) {
-
-  const [qnt, setQnt] = useState(0);
-
-  const add = () =>{
-    setQnt(qnt + 1);
-  }
-
-  const decrease = () =>{
-    if(qnt > 0){
-      setQnt(qnt - 1);
+  
+  const amountProduct = () => {
+    const p = findProduct(id);
+    
+    if(p){
+      return p.amount
     }
+
+    return 0;
   }
 
-  const renderComponentAdicionais = () => {
-    for(var i = 0; i < qnt; i++){
-      return <AdicionalSelect allAdicionais={Adicionais} qtn_adicionais={qtn_adicionais} product_name='Açai 200ml'/>
-    }
+  const Product = () => {
+    const p = findProduct(id);
+
+    return p
   }
+
+  const handleProductDecrement = () => {
+    updateProductAmount(id, amountProduct() - 1);
+  }
+
+  const handleAddProductIncrement = () => {
+    addProduct(id, name, price);
+  }
+
 
   return (
     <Container>
-
       <Content>
         <InfoItem image={`/images/${image}`}>
           <figure />
           <div>
             <h4>{name}</h4>
-            <span>{price}</span>
+            <span>{formatPrice(price)}</span>
           </div>
         </InfoItem>
 
         <AddProduct>
-          {qnt >= 1 && (
-            <button type="button" id="dec" onClick={decrease}>-</button>
-          )}
+          {amountProduct() >= 1 && (
+            <button type="button" id="dec" onClick={() => handleProductDecrement()}>-</button>
+          )
+        }
           
-          <input type="text" value={qnt} disabled/>
-          <button type="button" id="acre" onClick={add}>+</button>
+          <input type="text" value={amountProduct()} disabled/>
+          <button type="button" id="acre" onClick={() => handleAddProductIncrement()}>+</button>
         </AddProduct>
       </Content>
-      {renderComponentAdicionais()}
+      {products.map(p =>{
+        if(p.id === id){
+          return <AdicionalSelect key={p.id} allAdicionais={Adicionais} max_adicionais={max_adicionais} product_name={name} product_id={id}/>
+        }
+      })}
     </Container>
   );
 }
