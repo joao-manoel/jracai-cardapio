@@ -111,6 +111,12 @@ function ProductItem({name, price, image, qtn_adicionais, id}: ProductItemProps)
     }
   }
 
+  const renderComponentAdicionais = () => {
+    for(var i = 0; i < qnt; i++){
+      return <AdicionalSelect allAdicionais={Adicionais} qtn_adicionais={qtn_adicionais} product_name='Açai 200ml'/>
+    }
+  }
+
   return (
     <Container>
 
@@ -132,8 +138,7 @@ function ProductItem({name, price, image, qtn_adicionais, id}: ProductItemProps)
           <button type="button" id="acre" onClick={add}>+</button>
         </AddProduct>
       </Content>
-
-      <AdicionalSelect allAdicionais={Adicionais} qtn_adicionais={qtn_adicionais} product_name='Açai 200ml'/>
+      {renderComponentAdicionais()}
     </Container>
   );
 }
